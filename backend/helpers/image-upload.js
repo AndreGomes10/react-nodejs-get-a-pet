@@ -9,7 +9,7 @@ const imageStorage = multer.diskStorage({
         if(req.baseUrl.includes('users')) {
             folder = 'users'
         } else if(req.baseUrl.includes('pets')) {
-            folder = 'pet'
+            folder = 'pets'
         }
 
         cb(null, `public/images/${folder}`)  // o caminho onde vai ser salvo
@@ -17,7 +17,11 @@ const imageStorage = multer.diskStorage({
     filename: function(req, file, cb) {
         // vai incluir a data atual que o arquivo é salvo evitando a substituição de imagens
         // e vai concatenar o nome original do arquivo e acha a extensão dele e concatena junto com a data atual
-        cb(null, Date.now() + path.extname(file.originalname))
+        cb(
+            null,
+            Date.now() + 
+            String(Math.floor(Math.random() * 100)) + 
+            path.extname(file.originalname))
     },
 })
 

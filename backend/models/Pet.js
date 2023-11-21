@@ -27,7 +27,7 @@ const Pet = mongoose.model(
         available: {
             type: Boolean
         },
-        User: Object,  // o usuario
+        user: Object,  // o usuario
         adopter: Object  // quem adotou, informações de quem adotou o pet
     },
     /* 
