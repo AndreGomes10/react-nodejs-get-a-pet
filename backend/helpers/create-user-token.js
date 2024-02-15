@@ -5,7 +5,7 @@ const createUserToken = async (user, req, res) => {
     const token = jwt.sign({
         name: user.name,
         id: user._id
-    }, "nossosecret")  // nossosecret fortificar o jwt
+    }, "nossosecret")  // nossosecret fortificar o jwt, deixar o token unico
 
     // return token
     res.status(200).json({

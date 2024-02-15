@@ -1,0 +1,14 @@
+Criar projeto:
+    npx create-react-app .
+
+npm install axios events react-icons react-router-dom
+
+axios = vai fazer as conexões com a API
+events = pra conseguir enviar a parte de mensageria de um componente para o outro
+
+
+Executar projeto:
+    npm start
+
+    frontend
+        npm start

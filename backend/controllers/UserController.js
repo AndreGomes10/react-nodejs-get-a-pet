@@ -108,7 +108,7 @@ module.exports = class UserController {
             const token = getToken(req)
             const decoded = jwt.verify(token, 'nossosecret')  // verify, retorna um objeto com todas as propriedades que enviei
 
-            currentUser = await User.findById(decoded.id)
+            currentUser = await User.findById(decoded.id)  // aqui vai decodificar o token
 
             currentUser.password = undefined  //undefined, vai remover a senha do retorno
 
@@ -119,19 +119,18 @@ module.exports = class UserController {
         res.status(200).send(currentUser)
     }
 
-    // atualização do usuario
+    // Busca de usuario pelo id
     static async getUserById(req, res) {
         const id = req.params.id
-        
-        try{
-            const user = await User.findById(id)
-            res.status(200).json({ user })
-        }
-        catch (error){
-            res.status(422).json({message: 'Usuário não encontrado!'})
 
+        const user = await User.findById(id).select("-password")  // select("-password"), pra tirar o campo que não quero
+        
+        if(!user) {
+            res.status(422).json({message: 'Usuário não encontrado!'})
             return
         }
+
+        res.status(200).json({ user })
     }
 
     // PROTEÇÃO DA ROTA
