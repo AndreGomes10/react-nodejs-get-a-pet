@@ -25,6 +25,9 @@ function Navbar() {
         </li>
         {authenticated ? (
           <>
+          <li>
+              <Link to="/user/profile">Perfil</Link>
+            </li>
             <li>
             <Link onClick={logout}>Sair</Link>
             </li>

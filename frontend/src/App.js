@@ -13,6 +13,7 @@ import Message from './components/layout/Message'
 
 /* context */
 import { UserProvider } from './context/UserContext'
+import Profile from './components/pages/User/Profile'
 
 function App() {
   return (
@@ -26,6 +27,8 @@ function App() {
           <Route path='/login' element={<Login />} />
             
           <Route path='/register' element={<Register />} />
+
+          <Route path='/user/profile' element={<Profile />} />
             
           <Route path='/' element={<Home />} />
             
